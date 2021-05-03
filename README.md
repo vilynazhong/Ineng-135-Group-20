@@ -9,15 +9,18 @@ Description content
 
 ## Description of python file -- PCA model
 Description content
+
 1. bullet point
 2. bullt point
 
 ## Description of python file -- Time Series Model
 Description content
+
 1. bullet point
 2. bullt point
 
 ## Description of R file -- Gold Price Fully Analysis
 Description content
+
 1. bullet point
 2. bullt point
