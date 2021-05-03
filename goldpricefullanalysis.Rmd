@@ -1,0 +1,109 @@
+---
+title: "Gold Price Full Analysis"
+output: html_document
+---
+
+## Annual Data Initial Visualizations
+```{r}
+set1 <-read.csv("monthly_csv.csv",stringsAsFactors = FALSE)
+set2<- read.csv("annual_csv.csv")
+head(set1,5)
+tail(set1,5)
+set2
+plot(set2.ts)
+```
+```{r}
+set1$Date = seq(from = as.Date("1950-01-01"), to =as.Date("2020-07-01"), by = 'month')
+head(set1,5)
+
+set1.ts<- ts(set1[,2],frequency = 12)
+plot(set1.ts,ylab="Price",main="Time Series with Annual Data")
+
+#Autocorrelation：correlation between Xt and Xt+k
+acf(set1.ts,main="Autocorrelation")
+
+#Partial Autocorrelation: remove the linear effects of all the terms between two random variables(by fitting AR(h-1) model). This step is to see where it "cuts-off", which means the effects can't be explained by the linear effects.
+acf(set1.ts,type="partial",main="Partial Correlation")
+
+```
+
+```{r}
+#fit AR model
+library(tseries)
+library(ggplot2)
+library(forecast)
+library(dplyr)
+ar.model<- auto.arima(set1.ts,max.d=0,max.q =0,allowdrift=T)
+ar.model
+
+ma.model <- auto.arima(set1.ts,max.d=0,max.p=0,allowdrift=T)
+ma.model
+
+arma.model <- auto.arima(set1.ts,max.d=0,allowdrift=T)
+arma.model
+
+arima.model <- auto.arima(set1.ts,allowdrift=T)
+arima.model
+```
+
+```{r}
+#ar.forecast <- forecast(ar.model,h=10,level=80)
+#ma.forecast <- forecast(ma.model,h=10,level=80)
+#arma.forecast <- forecast(arma.model,h=10,level=80)
+arima.forecast <- forecast(arima.model,h=36,level=80)
+
+#autoplot(ar.forecast)
+#autoplot(arma.forecast)
+#autoplot(arima.forecast)
+autoplot(arima.forecast)
+arima.forecast
+```
+
+```{r}
+#smoothing model
+
+#model1<- HoltWinters(x=set1,beta=FALSE,gamma = FALSE)
+#model1$SSE
+
+#model1
+
+#model2<- HoltWinters(x=set1,gamma = FALSE)
+#model2$SSE
+
+#model2
+```
+
+
+
+
+
+
+```{r}
+#library("forecast")
+#forecast.HoltWinters(x=set1.ts,beta=FALSE,gamma = FALSE)
+```
+
+
+```{r}
+set2 <- read.csv('annual_csv.csv')
+set2.ts<-ts(set2[,2])
+set2
+```
+```{r}
+ar.model<- auto.arima(set2.ts,max.d=0,max.q =0,allowdrift=T)
+ar.model
+
+ma.model <- auto.arima(set2.ts,max.d=0,max.p=0,allowdrift=T)
+ma.model
+
+arma.model <- auto.arima(set2.ts,max.d=0,allowdrift=T)
+arma.model
+
+arima.model <- auto.arima(set2.ts,allowdrift=T)
+arima.model
+
+arima.forecast <- forecast(arima.model,h=10,level=80)
+autoplot(arima.forecast)
+arima.forecast
+```
+
