@@ -3,8 +3,8 @@
 This is the description to the whole project:
 
 Description content.
-*bullet point 1
-*bullet point 2
+* bullet point 1
+* bullet point 2
 
 ## Description of the python file -- linear regression 
 Description content
