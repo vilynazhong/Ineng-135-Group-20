@@ -27,13 +27,16 @@ Since we got the result from linear regression model which is biased, so we had 
 8. To show PCA has higher accuracy, we also applied binary prediction to compare with other methods, like just using original data or getting mean of the data
 
 ## Description of python file -- Time Series Model
-Description content
+Four time series models are used: AR, MA, ARMA, ARIMA. Out of the models used in this part, we choose the model with the smallest AIC for prediction purpose. We used ARIMA model for prediction, which gives the average result $1800/oz for gold price. 
 
-1. bullet point
-2. bullt point
+1. Import annual/monthly gold price data.
+2. Fit four time series models according to the data. 
+3. Generate prediction graphs using ARIMA model for both annual and monthly data using the ARIMA model.
 
 ## Description of R file -- Gold Price Fully Analysis
-Description content
+The R-code is used to find the optimal coefficients for four time-series models. The forecast function is used to generate predictions for gold price. 
 
-1. bullet point
-2. bullt point
+1. Import annual/monthly gold price data.
+2. Use auto.arima function to find the optimal coefficients for time series models.
+3. Use forecast function to predict future gold price.
+4. 
