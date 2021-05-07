@@ -39,4 +39,3 @@ The R-code is used to find the optimal coefficients for four time-series models.
 1. Import annual/monthly gold price data.
 2. Use auto.arima function to find the optimal coefficients for time series models.
 3. Use forecast function to predict future gold price.
-4. 
